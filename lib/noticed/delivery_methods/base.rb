@@ -10,7 +10,7 @@ module Noticed
 
       class << self
         # Copy option names from parent
-        def inherited(base) #:nodoc:
+        def inherited(base) # :nodoc:
           base.option_names = option_names.dup
           super
         end
@@ -31,7 +31,7 @@ module Noticed
 
       def perform(args)
         @notification = args[:notification_class].constantize.new(args[:params])
-        @options = args[:options]
+        @options = args[:options] || {}
         @params = args[:params]
         @recipient = args[:recipient]
         @record = args[:record]
